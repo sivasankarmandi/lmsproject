@@ -6,7 +6,7 @@ pipeline {
     environment {
 
     DOCKERHUB_CREDENTIALS = credentials('dockeruser1')
-     registry = "sivasanakrmandadi/frontend-lms"
+     registry = "sivasankarmandadi/frontend-lms"
         registryCredential = 'dockeruser1'
     }
 
@@ -15,7 +15,7 @@ pipeline {
 
         stage('Building the docker image') {
             steps {
-                sh 'cd webapp && docker build -t sivasanakrmandadi/frontend-lms .'
+                sh 'cd webapp && docker build -t sivasankarmandadi/frontend-lms .'
             }
         }
         stage('Logging into dockerhub account') {
@@ -25,12 +25,12 @@ pipeline {
         }
         stage('pushing the docker image into dockerhub') {
             steps {
-                  sh 'docker push sivasanakrmandadi/frontend-lms'
+                  sh 'docker push sivasankarmandadi/frontend-lms'
             }
         }
         stage('Remove old docker images') {
              steps {
-                 sh 'docker rmi -f sivasanakrmandadi/frontend-lms'
+                 sh 'docker rmi -f sivasankarmandadi/frontend-lms'
             }
         }
          stage('Running the docker container') {
