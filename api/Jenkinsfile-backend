@@ -7,8 +7,8 @@ pipeline {
     environment {
 
     DOCKERHUB_CREDENTIALS = credentials('dockeruser')
-     registry = "mubeen507/backend-lms"
-        registryCredential = 'dockeruser'
+     registry = "sivasankarmandadi/backend-lms"
+        registryCredential = 'dockersuer_siva_sankar'
         dockerImage = ''
     }
 
@@ -17,7 +17,7 @@ pipeline {
         
         stage('Building the docker image') {
             steps {
-                sh 'cd api && docker build -t mubeen507/backend-lms .'
+                sh 'cd api && docker build -t sivasankarmandadi/backend-lms .'
             }
         }
         stage('Logging into dockerhub account') {
@@ -27,12 +27,12 @@ pipeline {
         }
         stage('pushing the docker image into dockerhub') {
             steps {
-                  sh 'docker push mubeen507/backend-lms'
+                  sh 'docker push sivasankarmandadi/backend-lms'
             }
         }
         stage('Remove old docker images') {
              steps {
-                 sh 'docker rmi -f mubeen507/backend-lms'
+                 sh 'docker rmi -f sivasankarmandadi/backend-lms'
             }
         }
          stage('creating database container') {
